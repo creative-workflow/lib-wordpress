@@ -93,7 +93,7 @@ class Options extends \cw\php\js\expression\AbstractExpression{
   }
 
   public function toJsFile($file){
-    return file_put_contents($file, $this->toJsObject());
+    return file_put_contents($file, $this->toJs());
   }
 
   public function renderSettingsPage() {
