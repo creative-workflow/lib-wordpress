@@ -24,4 +24,17 @@ class Assets{
 
     return get_stylesheet_directory_uri() . '/' . $uri;
   }
+
+
+  private $published = false;
+
+  // for detecting whether to load default assets or not
+  public function published($set=null){
+    if($set === null)
+      return $this->published;
+
+    $this->published = !!$set;
+
+    return $this;
+  }
 }
