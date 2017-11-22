@@ -26,9 +26,8 @@ class Assets{
   }
 
 
-  private $published = false;
-
   // for detecting whether to load default assets or not
+  private $published = false;
   public function published($set=null){
     if($set === null)
       return $this->published;
@@ -36,5 +35,18 @@ class Assets{
     $this->published = !!$set;
 
     return $this;
+  }
+
+  protected $defaultCallable;
+  public function setDefault($callable){
+    $this->defaultCallable = $callable;
+  }
+
+  public function publishDefault(){
+    if(!is_callable($this->defaultCallable))
+      return ;
+
+    $tmp = $this->defaultCallable;
+    $tmp($this);
   }
 }
