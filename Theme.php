@@ -36,6 +36,15 @@ class Theme{
     }, 101 );
   }
 
+  function addHeaderContent($input) {
+    if(is_subclass_of($input, '\cw\php\js\expression\AbstractExpression'))
+      $input = new \cw\php\js\expression\Wrapper($input);
+
+    add_action( 'wp_head', function() use($input){
+      echo $input;
+    }, 101 );
+  }
+
   public function pageTemplate(){
     return get_query_template('page');
   }
