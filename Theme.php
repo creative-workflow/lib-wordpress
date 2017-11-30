@@ -9,6 +9,9 @@ class Theme{
   public $footer='';
 
   public function touchAfterPostUpdated($file = 'functions.php'){
+    if(!is_admin())
+      return $this;
+
     $file = get_stylesheet_directory() . '/' . $file;
 
     add_action( 'post_updated', function() use($file){
