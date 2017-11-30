@@ -14,4 +14,9 @@ class Helper{
     }, 11, 1);
   }
 
+  public static function addCodeToSingleProductInfo($code) {
+    add_action( 'woocommerce_single_product_summary', function() use($code){
+      echo $code;
+    }, 40 );
+  }
 }
