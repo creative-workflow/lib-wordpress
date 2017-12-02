@@ -1,0 +1,22 @@
+{
+  "name": "creative-workflow.wordpress",
+  "homepage": "https://github.com/creative-workflow/lib-wordpress",
+  "authors": [
+    "Tom Hanoldt <tom@creative-workflow.berlin>"
+  ],
+  "description": "wordpress helper library",
+  "main": "",
+  "keywords": [
+    "creative-workflow",
+    "wordpress",
+    "lib-wordpress"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

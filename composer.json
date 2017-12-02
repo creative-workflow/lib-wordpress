@@ -1,0 +1,23 @@
+{
+    "name": "creative-workflow/wordpress",
+    "type": "library",
+    "homepage": "https://github.com/creative-workflow/lib-wordpress",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Hanoldt",
+            "email": "tom@creative-workflow.berlin",
+            "homepage": "https://www.tomhanoldt.info",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+      "creative-workflow",
+      "wordpress",
+      "lib-wordpress"
+    ],
+    "description": "wordpress helper library",
+    "autoload" : {
+      "psr-0" : {"./" : ""}
+    }
+}

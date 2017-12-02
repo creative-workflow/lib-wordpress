@@ -2,6 +2,18 @@
 
 ### Setup
 ```
+bower install --save creative-workflow.sass
+bower install --save creative-workflow.php
+bower install --save creative-workflow.wordpress
+
+or
+
+composer require creative-workflow/sass
+composer require creative-workflow/php
+composer require creative-workflow/wordpress
+
+or
+
 git submodule add https://github.com/creative-workflow/lib-wordpress.git ./wordpress/wp-content/themes/child/lib/cw/wp
 git submodule add https://github.com/creative-workflow/lib-php.git ./wordpress/wp-content/themes/child/lib/cw/php
 git submodule add https://github.com/creative-workflow/lib-sass.git ./wordpress/wp-content/themes/child/lib/cw/sass
