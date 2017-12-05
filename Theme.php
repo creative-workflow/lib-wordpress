@@ -31,21 +31,28 @@ class Theme{
   }
 
   function addFooterContent($input) {
-    if(is_subclass_of($input, '\cw\php\js\expression\AbstractExpression'))
-      $input = new \cw\php\js\expression\Wrapper($input);
-
     add_action( 'wp_footer', function() use($input){
+      echo $input;
+    }, 101 );
+    return $this;
+  }
+
+  function addFooterContentJs($input) {
+    $input = new \cw\php\js\expression\Wrapper($input);
+
+    return $this->addFooterContent($input);
+  }
+
+  function addHeaderContent($input) {
+    add_action( 'wp_head', function() use($input){
       echo $input;
     }, 101 );
   }
 
-  function addHeaderContent($input) {
-    if(is_subclass_of($input, '\cw\php\js\expression\AbstractExpression'))
-      $input = new \cw\php\js\expression\Wrapper($input);
+  function addHeaderContentJs($input) {
+    $input = new \cw\php\js\expression\Wrapper($input);
 
-    add_action( 'wp_head', function() use($input){
-      echo $input;
-    }, 101 );
+    return $this->addHeaderContent($input);
   }
 
   public function pageTemplate(){

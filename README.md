@@ -111,7 +111,7 @@ $wpAssets->styles()
 
 $wpAssets->theme()
             ->touchAfterPostUpdated() // can be used for browser-sync reload
-            ->addFooterContent($jQuery); // when will render onReady content when __toString is called
+            ->addFooterContentJs($jQuery); // when will render onReady content when __toString is called
 
 ```
 
