@@ -43,6 +43,11 @@ class PostType{
     return $this;
   }
 
+  public function getPosts($args=[]){
+    return (new \cw\wp\custom\PostQuery($args))
+              ->type($this->id);
+  }
+
   public function publish(){
     $args           = $this->args;
     $args['labels'] = $this->labels;

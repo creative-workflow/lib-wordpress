@@ -5,12 +5,24 @@ namespace cw\wp\assets;
 class Scripts{
   use \cw\php\core\traits\Singleton;
 
-  public function add($handle, $uri, $dependencies = [], $version = 1, $inFooter = true, $priority=1){
-    $uri = \cw\wp\Assets::getInstance()->expand($uri);
+  public function add($handle, $uri=null, $dependencies = [], $version = 1, $inFooter = true, $priority=1){
+    if($uri !== null)
+      $uri = \cw\wp\Assets::getInstance()->expand($uri);
 
     add_action('wp_enqueue_scripts', function() use($handle, $uri, $dependencies, $version, $inFooter){
       wp_enqueue_script($handle, $uri, $dependencies, $version, $inFooter);
     }, $priority);
+
+    return $this;
+  }
+
+  public function addAdmin($handle, $uri=null, $dependencies = [], $version = 1){
+    if($uri !== null)
+      $uri = \cw\wp\Assets::getInstance()->expand($uri);
+
+    add_action('admin_enqueue_scripts', function() use($handle, $uri, $dependencies, $version){
+      wp_enqueue_script($handle, $uri, $dependencies, $version);
+    });
 
     return $this;
   }

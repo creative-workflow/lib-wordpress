@@ -40,6 +40,11 @@ class MetaBox{
     return $this;
   }
 
+  // which could be post, page, link etc. or custom post type name
+  public function forType($which){
+    return $this->screen($which);
+  }
+
   public function context($which){
     $this->context = $which;
     return $this;
@@ -84,6 +89,11 @@ class MetaBox{
     return $this;
   }
 
+  public function typeDate(){
+    $this->type = 'date';
+    return $this;
+  }
+
   public function metaId(){
     return 'meta_' . $this->id . '_content';
   }
@@ -120,7 +130,8 @@ class MetaBox{
         ) );
       break;
       case 'text':
-        echo '<input type="text" name="'.$this->metaId().'" value="'.$content.'">';
+      case 'date':
+        echo '<input type="'.$this->type.'" name="'.$this->metaId().'" value="'.$content.'">';
       break;
     }
   }
