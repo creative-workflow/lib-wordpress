@@ -55,6 +55,7 @@ class Theme{
     add_action($action, function() use($callable){
       call_user_func($callable, $this);
     });
+    return $this;
   }
 
   function addFooterContent($input) {
