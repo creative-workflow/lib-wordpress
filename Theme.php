@@ -1,4 +1,4 @@
-<?php
+<?
 
 namespace cw\wp;
 
@@ -21,13 +21,40 @@ class Theme{
     return $this;
   }
 
+  public function addSupport($feature, $args=null){
+    add_action( 'after_setup_theme', function() use($feature, $args){
+      add_theme_support($feature, $args);
+    });
+
+    return $this;
+  }
+
+  public function loadTextDomain($key, $src){
+    add_action( 'after_setup_theme', function() use($key, $src){
+      load_theme_textdomain($key, $src);
+    });
+
+    return $this;
+  }
+
   public function addBodyClass($class){
     add_filter( 'body_class', function($classes) use($class){
-      $classes[] = $class;
+      if(is_callable($class))
+        $class = $class();
+
+      if($class)
+        $classes[] = $class;
+
       return $classes;
     } );
 
     return $this;
+  }
+
+  public function conditional($action, $callable){
+    add_action($action, function() use($callable){
+      call_user_func($callable, $this);
+    });
   }
 
   function addFooterContent($input) {
