@@ -1,9 +1,11 @@
-<?php
+<?
 
 namespace cw\wp;
 
 class Assets{
   use \cw\php\core\traits\Singleton;
+
+  protected $_view;
 
   public function theme(){
     return Theme::getInstance();
@@ -17,6 +19,14 @@ class Assets{
     return assets\Styles::getInstance();
   }
 
+  public function view(\cw\wp\View $view = null){
+    if($view === null)
+      return $this->_view;
+
+    $this->_view = $view;
+    return $this;
+  }
+
   public function expand($uri){
     if(strpos($uri, '://') !== false
     || strpos($uri, '//')  === 0)
@@ -24,7 +34,6 @@ class Assets{
 
     return get_stylesheet_directory_uri() . '/' . $uri;
   }
-
 
   // for detecting whether to load default assets or not
   private $published = false;
