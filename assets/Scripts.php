@@ -1,4 +1,4 @@
-<?php
+<?
 
 namespace cw\wp\assets;
 
@@ -31,10 +31,17 @@ class Scripts{
     return $this->add($handle, $uri, $dependencies, $version, $inFooter = true, $priority);
   }
 
-  public function inline($handle, $content, $position = 'after', $priority=1){
-    add_action('wp_enqueue_scripts', function() use($handle, $content, $position){
-      wp_add_inline_script($handle, $content, $position);
-    }, $priority);
+  public function inline($handle, $content = null, $position = 'after', $priority=1){
+    if($content === null){
+      add_action( 'wp_head', function() use($handle){
+        echo "<script>$handle</script>\n";
+      }, 0 );
+    }
+    else{
+      add_action('wp_enqueue_scripts', function() use($handle, $content, $position){
+        wp_add_inline_script($handle, $content, $position);
+      }, $priority);
+    }
 
     return $this;
   }
