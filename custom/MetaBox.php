@@ -109,8 +109,12 @@ class MetaBox{
 
     $content = get_post_meta($postOrId, $this->metaId(), true);
 
-    if($content !== '')
+    if($content !== ''){
+      if($this->type == 'date')
+        $content = new \DateTime($content);
+
       return $content;
+    }
 
     return $this->default;
   }
@@ -131,6 +135,9 @@ class MetaBox{
       break;
       case 'text':
       case 'date':
+        if(is_a($content, 'DateTime'))
+          $content = $content->format('Y-m-d');
+
         echo '<input type="'.$this->type.'" name="'.$this->metaId().'" value="'.$content.'">';
       break;
     }
