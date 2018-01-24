@@ -19,7 +19,7 @@ class Helper{
     add_action( 'admin_menu', function() use($name){
       global $menu;
       $menu = array_filter($menu, function($e) use($name){
-        return $e[0] != $name;
+        return substr($e[0], 0, strlen($name)) !== $name;
       });
     });
   }
