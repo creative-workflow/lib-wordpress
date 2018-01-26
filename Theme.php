@@ -75,6 +75,8 @@ class Theme{
     add_action( 'wp_head', function() use($input){
       echo $input;
     }, 101 );
+
+    return $this;
   }
 
   function addHeaderContentJs($input) {
