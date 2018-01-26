@@ -35,6 +35,14 @@ class Assets{
     return get_stylesheet_directory_uri() . '/' . $uri;
   }
 
+  public function expandPath($uri){
+    if(strpos($uri, '://') !== false
+    || strpos($uri, '//')  === 0)
+      return $uri;
+
+    return get_stylesheet_directory() . '/' . $uri;
+  }
+
   // for detecting whether to load default assets or not
   private $published = false;
   public function published($set=null){
