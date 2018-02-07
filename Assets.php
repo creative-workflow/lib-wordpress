@@ -43,6 +43,10 @@ class Assets{
     return get_stylesheet_directory() . '/' . $uri;
   }
 
+  function getContent($relativePathOrUri){
+    return file_get_contents($this->expandPath($relativePathOrUri));
+  }
+
   // for detecting whether to load default assets or not
   private $published = false;
   public function published($set=null){
