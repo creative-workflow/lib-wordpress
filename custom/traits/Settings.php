@@ -8,10 +8,11 @@ trait Settings{
     return $this;
   }
 
-  public function slug($name, $withCategory = true){
+  public function slug($name, $withCategory = true, $hierarchical = true){
     return $this->rewrite([
                             'slug' => $name,
-                            'with_front' => $withCategory
+                            'with_front' => $withCategory,
+                            'hierarchical' => $hierarchical
                           ]);
   }
 
