@@ -32,6 +32,9 @@ class Assets{
     || strpos($uri, '//')  === 0)
       return $uri;
 
+    if($this->version)
+      $uri = str_replace('{{version}}', $this->version, $uri);
+
     return get_stylesheet_directory_uri() . '/' . $uri;
   }
 
@@ -39,6 +42,9 @@ class Assets{
     if(strpos($uri, '://') !== false
     || strpos($uri, '//')  === 0)
       return $uri;
+
+    if($this->version)
+      $uri = str_replace('{{version}}', $this->version, $uri);
 
     return get_stylesheet_directory() . '/' . $uri;
   }
@@ -69,5 +75,15 @@ class Assets{
 
     $tmp = $this->defaultCallable;
     $tmp($this);
+  }
+
+  private $version = null;
+  public function version($set=null){
+    if($set === null)
+      return $this->version;
+
+    $this->version = $set;
+
+    return $this;
   }
 }
