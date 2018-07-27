@@ -54,11 +54,15 @@ class Styles{
       echo implode(' || ', $wp_styles->queue);
       echo ' -->'.PHP_EOL;
     }, 123);
+
+    return $this;
   }
 
   public function conditional($callable){
     add_action('wp_enqueue_scripts', function() use($callable){
       call_user_func($callable, $this);
     });
+
+    return $this;
   }
 }

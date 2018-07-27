@@ -81,6 +81,8 @@ class Scripts{
       echo implode(' || ', $wp_scripts->queue);
       echo ' -->'.PHP_EOL;
     }, 123);
+
+    return $this;
   }
 
   public function replaceJquery($with){
@@ -107,6 +109,7 @@ class Scripts{
     add_action('wp_enqueue_scripts', function() use($callable){
       call_user_func($callable, $this);
     });
-  }
 
+    return $this;
+  }
 }
