@@ -11,6 +11,7 @@ class MetaBox{
   public $callback;
   public $callbackArgs = null;
   public $type         = 'html';
+  public $typeOptionDefinition = [];
   public $default      = '';
   public $description   = '';
 
@@ -94,6 +95,12 @@ class MetaBox{
     return $this;
   }
 
+  public function typeSelect($options){
+    $this->type = 'select';
+    $this->typeOptionDefinition = $options;
+    return $this;
+  }
+
   public function metaId(){
     return 'meta_' . $this->id . '_content';
   }
@@ -132,6 +139,15 @@ class MetaBox{
           'textarea_rows' => 10,
           'teeny'         => true
         ) );
+      break;
+      case 'select':
+        echo '<select name="'.$this->metaId().'">';
+        foreach($this->typeOptionDefinition as $value => $name){
+          $selected = ($content == $value) ? "selected='selected'" : '';
+          echo "<option value='$value' $selected>$name</option>";
+        }
+
+        echo '</select>';
       break;
       case 'text':
       case 'date':
