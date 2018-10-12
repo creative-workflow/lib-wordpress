@@ -60,7 +60,10 @@ class Theme{
 
   function addFooterContent($input) {
     add_action( 'wp_footer', function() use($input){
-      echo $input;
+      if(is_callable($input))
+        echo $input();
+      else
+        echo $input;
     }, 101 );
     return $this;
   }
