@@ -160,8 +160,10 @@ class MetaBox{
   }
 
   public function save($post_id, $post){
-    if(isset($_POST[$this->metaId()])
-    && $_POST[$this->metaId()] != '')
+    if(!isset($_POST[$this->metaId()]))
+      return ;
+
+    if($_POST[$this->metaId()] != '')
       update_post_meta($post_id, $this->metaId(), $_POST[$this->metaId()]);
 
     else
