@@ -168,7 +168,7 @@ class MetaBox{
         if($content)
           $image = $this->contentAsImage('50x50');
         else
-          $image = [0 => '#'];
+          $image = [0 => 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='];
 
         echo '<img id="'.$this->metaId().'_image" style="width: 50px; height: auto; display: block;" src="'.$image[0].'"/>';
 
