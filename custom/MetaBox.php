@@ -257,8 +257,7 @@ class MetaBox{
               [$this, 'show'],
               $this->screen,
               $this->context,
-              $this->priority,
-              $callbackArgs);
+              $this->priority);
 
     return $this;
   }
