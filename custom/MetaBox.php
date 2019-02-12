@@ -106,6 +106,13 @@ class MetaBox{
     return $this;
   }
 
+  protected $inlineHtml;
+  public function typeInlineHtml($input){
+    $this->type = 'inline-html';
+    $this->inlineHtml = $input;
+    return $this;
+  }
+
   public function metaId(){
     return 'meta_' . $this->id . '_content';
   }
@@ -164,7 +171,7 @@ class MetaBox{
       case 'media':
         echo '<button type="button" class="button" id="'.$this->metaId().'_button" data-media-uploader-target="#'.$this->metaId().'">upload</button>';
         echo '<input type="hidden" id="'.$this->metaId().'" name="'.$this->metaId().'" value="'.$content.'">';
-        echo '<a href="#" id="'.$this->metaId().'_button_remove" style="display:inline-block; padding-left: 10px">delete</a>';
+        echo '<a href="#" id="'.$this->metaId().'_button_remove" class="button" style="display:inline-block; float: right; padding-left: 10px">Löschen</a>';
         if($content)
           $image = $this->contentAsImage('50x50');
         else
@@ -213,6 +220,13 @@ class MetaBox{
           $content = $content->format('Y-m-d');
 
         echo '<input type="'.$this->type.'" name="'.$this->metaId().'" value="'.$content.'">';
+      break;
+      case 'inline-html':
+        if(is_callable($this->inlineHtml)){
+          $tmp = $this->inlineHtml;
+          echo $tmp();
+        }else
+          echo $this->inlineHtml;
       break;
     }
   }
