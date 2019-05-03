@@ -21,6 +21,6 @@ class Helper{
       $menu = array_filter($menu, function($e) use($name){
         return substr($e[0], 0, strlen($name)) !== $name;
       });
-    });
+    }, 100000000);
   }
 }
