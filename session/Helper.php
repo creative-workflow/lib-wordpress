@@ -7,7 +7,8 @@ namespace cw\wp\session;
 class Helper{
   public static function bootstrap(){
     add_action('init', function(){
-      if(!session_id())
+      if(!session_id()
+      && !headers_sent())
           session_start();
 
     }, 1);
