@@ -26,7 +26,8 @@ class PostType{
     'has_archive'        => true,
     'hierarchical'       => false,
     'menu_position'      => null,
-    'supports'           => []
+    'supports'           => [],
+    'show_in_rest'       => true
   ];
 
   public function __construct($id){
