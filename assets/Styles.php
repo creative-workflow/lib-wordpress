@@ -58,10 +58,10 @@ class Styles{
     return $this;
   }
 
-  public function conditional($callable){
+  public function conditional($callable, $order = 0){
     add_action('wp_enqueue_scripts', function() use($callable){
       call_user_func($callable, $this);
-    });
+    }, $order);
 
     return $this;
   }
