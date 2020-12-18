@@ -19,6 +19,7 @@ class Taxanomy{
     'update_count_callback' => '_update_post_term_count',
     'query_var'             => true,
     'rewrite'               => array( 'slug' => 'writer' ),
+    'show_in_rest'          => true,
   ];
 
   public function __construct($id){
@@ -39,6 +40,11 @@ class Taxanomy{
     return $this;
   }
 
+  public function showinRest($set = true){
+    $this->args['show_in_rest'] = $set;
+    return $this;
+  }
+  
   public function updateCountCallback($set = '_update_post_term_count'){
     $this->args['update_count_callback'] = $set;
     return $this;
