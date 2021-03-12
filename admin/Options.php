@@ -122,7 +122,10 @@ class Options extends \cw\php\js\expression\AbstractExpression{
   public function renderSetting($name, $config){
     switch($config['type']){
       case 'plain':
-        return @$config['default'];
+        if(isset($config['default']) && is_callable($config['default']))
+          return $config['default']();
+        else
+          return @$config['default'];
       case 'textarea':
         $value = esc_attr( get_option($name, @$config['default']) );
         return '<textarea name="'.$name.'">'.$value.'</textarea>';
