@@ -13,6 +13,10 @@ trait Labels{
     return $this->label('add_new', _x($key, 'book', $this->textDomain));
   }
 
+  public function labelAddNewItem($key){
+    return $this->label('add_new_item', __($key, $this->textDomain));
+  }
+
   public function labelNewItem($key){
     return $this->label('new_item', __($key, $this->textDomain));
   }
@@ -21,8 +25,20 @@ trait Labels{
     return $this->label('view_item', __($key, $this->textDomain));
   }
 
+  public function labelEditItem($key){
+    return $this->label('edit_item', __($key, $this->textDomain));
+  }
+
+  public function labelSearchItems($key){
+    return $this->label('search_items', __($key, $this->textDomain));
+  }
+
   public function labelNotFoundInTrash($key){
     return $this->label('not_found_in_trash', __($key, $this->textDomain));
+  }
+
+  public function labelNotFound($key){
+    return $this->label('not_found', __($key, $this->textDomain));
   }
 
   public function description($description){
